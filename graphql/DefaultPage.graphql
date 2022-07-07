@@ -1,0 +1,5 @@
+query DefaultPage($url: String!, $rootCategory: String!) {
+  ...MenuQueryFragment
+  ...FooterQueryFragment
+  ...PageContentQueryFragment
+}

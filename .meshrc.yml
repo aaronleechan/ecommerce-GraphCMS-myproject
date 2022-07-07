@@ -1,0 +1,20 @@
+sources:
+  - name: graphcms
+    handler:
+      graphql:
+        endpoint: ${GRAPHCMS_URL}
+  - name: m2
+    handler:
+      graphql:
+        endpoint: ${MAGENTO_ENDPOINT}
+        schemaHeaders:
+          Store: '{context.headers.store}'
+          Authorization: '{context.headers.authorization}'
+        operationHeaders:
+          Store: '{context.headers.store}'
+          Authorization: '{context.headers.authorization}'
+          X-ReCaptcha: "{context.headers['x-recaptcha']}"
+          Preview-Version: "{context.headers['preview-version']}"
+          Content-Currency: "{context.headers['content-currency']}"
+serve:
+  playground: true
