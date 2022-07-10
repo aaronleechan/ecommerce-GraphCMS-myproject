@@ -33,12 +33,12 @@ function CmsPage(props: Props) {
 
   return (
     <>
-      <PageMeta
+      {/* <PageMeta
         title={page?.metaTitle ?? title ?? ''}
         metaDescription={page?.metaDescription ?? ''}
         metaRobots={metaRobots}
         canonical={page?.url === 'page/home' ? '/' : `/${page?.url}`}
-      />
+      /> */}
 
       <LayoutHeader floatingMd floatingSm>
         {router.pathname.split('?')[0] !== '/' && (
@@ -53,11 +53,11 @@ function CmsPage(props: Props) {
       {pages?.[0] && (
         <RowRenderer
           content={pages?.[0].content}
-          renderer={{
-            RowProduct: (rowProps) => (
-              <RowProduct {...rowProps} {...product} items={products?.items} />
-            ),
-          }}
+          // renderer={{
+          //   RowProduct: (rowProps) => (
+          //     <RowProduct {...rowProps} {...product} items={products?.items} />
+          //   ),
+          // }}
         />
       )}
     </>

@@ -16,5 +16,6 @@ fragment RowRenderer on Page {
     ...RowContentLinks
     ...RowProduct
     ...Banner
+    ...Menu
   }
 }

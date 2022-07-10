@@ -1,29 +1,65 @@
 import { PageOptions } from '@graphcommerce/framer-next-pages'
 import { StoreConfigDocument } from '@graphcommerce/magento-store'
 import { GetStaticProps } from '@graphcommerce/next-ui'
-import { Container } from '@mui/material'
+import { Button, Container } from '@mui/material'
 import { GetStaticPaths } from 'next'
 import { LayoutFull, LayoutFullProps } from '../../components'
 import { DefaultPageDocument, DefaultPageQuery } from '../../graphql/DefaultPage.gql'
 import { PagesStaticPathsDocument } from '../../graphql/PagesStaticPaths.gql'
 import { graphqlSsrClient, graphqlSharedClient } from '../../lib/graphql/graphqlSsrClient'
+import { styled } from '@mui/material'
+import { Trans } from '@lingui/react'
 
 type Props = DefaultPageQuery
 type RouteProps = { url: string }
 type GetPageStaticPaths = GetStaticPaths<RouteProps>
 type GetPageStaticProps = GetStaticProps<LayoutFullProps, Props, RouteProps>
 
+const AnimatedButton = styled(Button,{name: 'animatedButton'})(
+  ({theme}) =>({
+    '@keyframes pulse':{
+      '0%':{
+        boxShadow: `0 0 0 0 ${theme.palette.primary.main}`
+      },
+      '100%':{
+        boxShadow: `0 0 0 15px ${theme.palette.background.default}`,
+      },
+    },
+    animation: 'pulse 1.5s infinite',
+  }),
+)
+
 function AboutUs({ pages }: Props) {
   const title = pages?.[0].title ?? ''
 
-  return <Container>About Us {title}</Container>
+  const aboutUsRender = () => {
+    return(
+      <Container>
+        <Button 
+          color='primary' variant='pill'
+          sx={(theme)=>({
+            borderRadius: `1px solid ${theme.palette.divider}`,
+            backgroundColor: theme.palette.primary.main
+          })}
+        > 
+          Submit 
+        </Button>
+      </Container>
+    )
+  }
+
+  return (
+    <AnimatedButton color='primary' variant='contained'>
+        {/* {aboutUsRender()} */}
+    </AnimatedButton>
+  )
 }
 
 AboutUs.pageOptions = {
   Layout: LayoutFull,
 } as PageOptions
 
-export default AboutUs
+export default AboutUs;
 
 export const getStaticPaths: GetPageStaticPaths = async (context) => {
   const { locales = [] } = context

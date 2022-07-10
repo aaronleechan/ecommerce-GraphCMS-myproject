@@ -14,6 +14,7 @@ import { RowRendererFragment } from './RowRenderer.gql'
 import { RowServiceOptions } from './RowServiceOptions/RowServiceOptions'
 import { RowSpecialBanner } from './RowSpecialBanner/RowSpecialBanner'
 import { Banner } from './Banner'
+import { Menu } from './Menu'
 
 type ContentTypeRenderer = TypeRenderer<PageContentQueryFragment['pages'][0]['content'][0]>
 
@@ -30,6 +31,7 @@ const defaultRenderer: Partial<ContentTypeRenderer> = {
   RowContentLinks,
   RowProduct,
   Banner,
+  Menu
 }
 
 export type PageProps = RowRendererFragment & {

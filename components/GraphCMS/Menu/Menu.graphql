@@ -1,0 +1,8 @@
+fragment Menu on Menu{
+    image{
+        ...Asset
+    }
+    copy{
+        raw
+    }
+}
