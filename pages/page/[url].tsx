@@ -24,12 +24,12 @@ function CmsPage(props: Props) {
   const { pages, products } = props
   const page = pages?.[0]
 
+  console.log({" pages ": pages})
+
   const title = page?.title ?? ''
 
   const product = products?.items?.[0]
   const metaRobots = page?.metaRobots.toLowerCase().split('_').flat(1) as MetaRobots[]
-  console.log({" products ": products})
-  console.log({" pages ": pages})
 
   return (
     <>

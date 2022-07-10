@@ -1,0 +1,8 @@
+fragment Banner on Banner {
+  image {
+    ...Asset
+  }
+  copy {
+    raw
+  }
+}
